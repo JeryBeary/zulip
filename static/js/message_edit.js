@@ -117,7 +117,8 @@ exports.save = function (row, from_topic_edited_only) {
         data: request,
         success: function () {
             if (msg_list === current_msg_list) {
-                row.find(".edit_error").text(i18n.t("Message successfully edited!")).removeClass("alert-error").addClass("alert-success").show();
+                row.find(".edit_error").text(i18n.t("Message successfully edited!")).
+                  removeClass("alert-error").addClass("alert-success").show();
             }
         },
         error: function (xhr) {
