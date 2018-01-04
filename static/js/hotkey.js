@@ -532,7 +532,8 @@ exports.process_hotkey = function (e, hotkey) {
             return true;
         }
 
-        if ((event_name === 'up_arrow' || event_name === 'down_arrow') && compose_state.focus_in_empty_compose()) {
+        if ((event_name === 'up_arrow' || event_name === 'down_arrow') && 
+            compose_state.focus_in_empty_compose()) {
             compose_actions.cancel();
             // don't return, as we still want it to be picked up by the code below
         } else if (event_name === "page_up") {

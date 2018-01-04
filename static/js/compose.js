@@ -18,7 +18,8 @@ exports.announce_warn_threshold = 60;
 
 exports.uploads_domain = document.location.protocol + '//' + document.location.host;
 exports.uploads_path = '/user_uploads';
-exports.uploads_re = new RegExp("\\]\\(" + exports.uploads_domain + "(" + exports.uploads_path + "[^\\)]+)\\)", 'g');
+exports.uploads_re = new RegExp("\\]\\(" + exports.uploads_domain + "(" + exports.uploads_path +
+                     "[^\\)]+)\\)", 'g');
 exports.clone_file_input = undefined;
 
 function make_uploads_relative(content) {
@@ -525,11 +526,13 @@ function validate_private_message() {
     var context = {};
     if (invalid_recipients.length === 1) {
         context = {recipient: invalid_recipients.join()};
-        compose_error(i18n.t("The recipient __recipient__ is not valid", context), $("#private_message_recipient"));
+        compose_error(i18n.t("The recipient __recipient__ is not valid", context),
+                             $("#private_message_recipient"));
         return false;
     } else if (invalid_recipients.length > 1) {
         context = {recipients: invalid_recipients.join()};
-        compose_error(i18n.t("The recipients __recipients__ are not valid", context), $("#private_message_recipient"));
+        compose_error(i18n.t("The recipients __recipients__ are not valid", context),
+                      $("#private_message_recipient"));
         return false;
     }
     return true;
@@ -815,7 +818,8 @@ exports.initialize = function () {
         var preview_html;
         if (rendered_content.indexOf("<p>/me ") === 0) {
             // Handle previews of /me messages
-            preview_html = "<strong>" + page_params.full_name + "</strong> " + rendered_content.slice(4 + 3, -4);
+            preview_html = "<strong>" + page_params.full_name + "</strong> " +
+                           rendered_content.slice(4 + 3, -4);
         } else {
             preview_html = rendered_content;
         }
